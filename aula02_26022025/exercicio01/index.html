@@ -1,14 +1,114 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário - AULA 02</title>
+    <title>Document</title>
 </head>
+
+<style>
+
+    * { 
+        padding: 0px;
+        margin: 0px;
+    }
+
+    body {
+        background-color: antiquewhite;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        background-color: rgb(202, 202, 202);
+        border-radius: 1rem;
+        padding: 10px;
+        margin: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+    }
+</style>
+
 <body>
-    <h2 id="area">Bem-vindo!</h2>
-    <button onclick="entrar()">Acessar</button>
-    <script src="script.js"></script>
+
+    <div class="container">
+        <h2 id="area">Bem vindo!</h2>
+        <h3 id="media"></h3>
+        <p id="botao"></p>
+        <button onclick="entrar()">Acessar</button>
+    </div>
+
+    <script>
+        let area = document.getElementById('area')
+        let botao = document.getElementById('botao')
+        let media = document.getElementById('media')
+        let nome, curso;
+
+        function entrar() {
+            nome = prompt("Digite seu nome:")
+            curso;
+
+            if (nome === '' || nome === null) {
+                alert("Ops... algo deu errado!")
+                area.innerHTML = `Clique no "acessar" novamente`
+            } else {
+                curso = prompt("Digite seu curso: ")
+                if (curso === '' || curso === null) {
+                    alert("Ops... algo deu errado!")
+                    area.innerHTML = `Clique no "acessar" novamente`
+                } else {
+                    mensagem();
+                }
+            }
+        }
+
+        function mensagem() {
+            area.innerHTML = `Bem vindo ${nome}, cursando ${curso}`
+
+            let botaomedia = document.createElement("button")
+            botaomedia.innerText = "Calcular Média"
+            botaomedia.onclick = calcularMedia;
+            botao.appendChild(botaomedia)
+
+            let botaosair = document.createElement("button")
+            botaosair.innerText = "Sair"
+            botaosair.onclick = sair;
+            botao.appendChild(botaosair)
+        }
+
+
+
+        function calcularMedia() {
+
+            let nota, somar, calcmedia, loop;
+            somar = 0;
+
+            for (let i = 0; i < 3; i++ ) {
+                nota = Number(prompt(`Digite sua nota ${i+1}`));
+                while (nota === '' || nota === null) {
+                    nota = Number(prompt(`Digite sua nota ${i+1}`));
+                }
+                somar += nota;
+            }
+
+            calcmedia = somar/3
+            media.innerHTML = `Sua média ficou ${calcmedia}`
+        }
+
+        function sair() {
+            alert("Até mais!");
+            area.innerHTML = "Você saiu!";
+        }
+
+    </script>
 </body>
+
 </html>
