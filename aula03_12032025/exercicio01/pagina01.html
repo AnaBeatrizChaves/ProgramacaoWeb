@@ -1,0 +1,45 @@
+<!-- 1 -Modifique o código fornecido para que, além de calcular o
+quadrado do número, ele também calcule e exiba o cubo do
+número. O resultado deve ser exibido na mesma página, abaixo do
+resultado do quadrado.
+Colocando uma estilização com css ou bootstrap--> 
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora</title>
+<script src="script.js" defer></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="card" style="width: 40rem;">
+        <img class="card-img-top" src="img.png" alt="capa">
+        <div class="card-body">
+          <h5 class="card-title">Calculadora</h5>
+          <p class="card-text">
+            
+        <form id="numeroForm">
+            <label for="numero">Digite um número:</label>
+            <input type="number" id="numero" name="numero" required>
+            <button class="btn btn-primary" type="submit">Calcular</button>
+            
+            </form>
+            <hr>
+            <div class="alert alert-dark" role="alert">
+                <p>Quadrado: <span id="quadrado"></span></p>
+            </div>
+            <div class="alert alert-dark" role="alert">
+                <p>Cubo: <span id="cubo"></span></p>
+            </div>
+          </p>
+        </div>
+      </div>
+
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
