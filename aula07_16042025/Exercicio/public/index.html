@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de Salários</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark">
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h1 class="card-title text-center mb-4">Cadastro de Salários</h1>
+
+            <form action="/adicionar" method="POST" class="mb-4">
+              <div class="mb-3">
+                <label for="salario" class="form-label">Digite um salário:</label>
+                <input type="number" step="0.01" name="salario" id="salario" class="form-control" required>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Adicionar</button>
+              </div>
+            </form>
+
+            <h4>Maior salário:</h4>
+            <p id="maior-salario" class="fs-5 text-success">
+              Nenhum salário cadastrado
+            </p>
+
+            <h4 class="mt-4">Lista de salários:</h4>
+            <ul id="lista-salarios" class="list-group">
+              <li class="list-group-item">Nenhum salário cadastrado</li>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function carregarSalarios() {
+      const res = await fetch('/salarios');
+      const data = await res.json();
+
+      const maiorSalario = document.getElementById('maior-salario');
+      const listaSalarios = document.getElementById('lista-salarios');
+
+      if (data.salarios.length > 0) {
+        maiorSalario.textContent = `R$ ${data.maiorSalario.toFixed(2)}`;
+        listaSalarios.innerHTML = data.salarios.map(s => `<li class="list-group-item">R$ ${s.toFixed(2)}</li>`).join('');
+      } else {
+        maiorSalario.textContent = 'Nenhum salário cadastrado';
+        listaSalarios.innerHTML = '<li class="list-group-item">Nenhum salário cadastrado</li>';
+      }
+    }
+
+    carregarSalarios();
+  </script>
+
+</body>
+</html>
