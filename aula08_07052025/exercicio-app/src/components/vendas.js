@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import '../App.css';
 
 function Vendas() {
   const [valorVenda, setValorVenda] = useState('');
@@ -31,23 +32,10 @@ function Vendas() {
           placeholder="Digite o valor da venda"
           value={valorVenda}
           onChange={(e) => setValorVenda(e.target.value)}
-          style={{ padding: '10px', fontSize: '16px', borderRadius: '5px' }}
+          className="form-control"
         />
 
-        <button
-          onClick={calcularDesconto}
-          style={{
-            marginTop: '10px',
-            padding: '10px 20px',
-            fontSize: '16px',
-            borderRadius: '5px',
-            backgroundColor: '#61dafb',
-            border: 'none',
-            cursor: 'pointer'
-          }}
-        >
-          Calcular
-        </button>
+        <button onClick={calcularDesconto}>Calcular</button>
 
         {mensagem && <p>{mensagem}</p>}
         {valorFinal !== null && (
