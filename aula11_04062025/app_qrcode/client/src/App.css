@@ -1,0 +1,67 @@
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.input-container {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.qr-container {
+  margin-top: 30px;
+}
+
+.qr-container img {
+  max-width: 300px;
+  height: auto;
+  border: 1px solid #eee;
+  padding: 10px;
+  background: white;
+}
+
+.qr-container a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #2196F3;
+  text-decoration: none;
+}
+
+.qr-container a:hover {
+  text-decoration: underline;
+}
