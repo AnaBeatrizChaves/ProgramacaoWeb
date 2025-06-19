@@ -36,7 +36,7 @@ const placeOrder = async (req, res) => {
             price_data: {
                 currency: currency,
                 product_data: {
-                    name: "Delivery Charge"
+                    name: "Taxa de entrega"
                 },
                 unit_amount: deliveryCharge * 100
             },
@@ -54,7 +54,7 @@ const placeOrder = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" })
+        res.json({ success: false, message: "Erro" })
     }
 }
 
@@ -72,11 +72,11 @@ const placeOrderCod = async (req, res) => {
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
 
-        res.json({ success: true, message: "Order Placed" });
+        res.json({ success: true, message: "Pedido realizado com sucesso!" });
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" })
+        res.json({ success: false, message: "Erro" })
     }
 }
 
@@ -87,7 +87,7 @@ const listOrders = async (req, res) => {
         res.json({ success: true, data: orders })
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" })
+        res.json({ success: false, message: "Erro" })
     }
 }
 
@@ -98,7 +98,7 @@ const userOrders = async (req, res) => {
         res.json({ success: true, data: orders })
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" })
+        res.json({ success: false, message: "Erro" })
     }
 }
 
@@ -106,9 +106,9 @@ const updateStatus = async (req, res) => {
     console.log(req.body);
     try {
         await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status });
-        res.json({ success: true, message: "Status Updated" })
+        res.json({ success: true, message: "Status atualizado" })
     } catch (error) {
-        res.json({ success: false, message: "Error" })
+        res.json({ success: false, message: "Erro" })
     }
 
 }
@@ -118,14 +118,14 @@ const verifyOrder = async (req, res) => {
     try {
         if (success === "true") {
             await orderModel.findByIdAndUpdate(orderId, { payment: true });
-            res.json({ success: true, message: "Paid" })
+            res.json({ success: true, message: "Pago" })
         }
         else {
             await orderModel.findByIdAndDelete(orderId)
-            res.json({ success: false, message: "Not Paid" })
+            res.json({ success: false, message: "Pagamento não realizado" })
         }
     } catch (error) {
-        res.json({ success: false, message: "Not  Verified" })
+        res.json({ success: false, message: "Não verificado" })
     }
 
 }

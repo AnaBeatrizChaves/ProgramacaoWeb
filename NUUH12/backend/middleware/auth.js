@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const authMiddleware = async (req, res, next) => {
     const { token } = req.headers;
     if (!token) {
-        return res.json({success:false,message:'Login não autorizado novamente'});
+        return res.json({success:false,message:'Login não autorizado'});
     }
     try {
         const token_decode =  jwt.verify(token, process.env.JWT_SECRET);

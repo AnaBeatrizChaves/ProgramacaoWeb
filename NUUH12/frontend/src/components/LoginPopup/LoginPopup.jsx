@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 const LoginPopup = ({ setShowLogin }) => {
 
     const { setToken, url,loadCartData } = useContext(StoreContext)
-    const [currState, setCurrState] = useState("Sign Up");
+    const [currState, setCurrState] = useState("Cadastrar-se");
 
     const [data, setData] = useState({
         name: "",
@@ -26,7 +26,7 @@ const LoginPopup = ({ setShowLogin }) => {
         e.preventDefault()
 
         let new_url = url;
-        if (currState === "Login") {
+        if (currState === "Entrar") {
             new_url += "/api/user/login";
         }
         else {
@@ -51,18 +51,18 @@ const LoginPopup = ({ setShowLogin }) => {
                     <h2>{currState}</h2> <img onClick={() => setShowLogin(false)} src={assets.cross_icon} alt="" />
                 </div>
                 <div className="login-popup-inputs">
-                    {currState === "Sign Up" ? <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' required /> : <></>}
-                    <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your email' />
-                    <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Password' required />
+                    {currState === "Cadastrar-se" ? <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Seu nome' required /> : <></>}
+                    <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Seu email' />
+                    <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Senha' required />
                 </div>
-                <button>{currState === "Login" ? "Login" : "Create account"}</button>
+                <button>{currState === "Entrar" ? "Entrar" : "Criar uma conta"}</button>
                 <div className="login-popup-condition">
                     <input type="checkbox" name="" id="" required/>
-                    <p>By continuing, i agree to the terms of use & privacy policy.</p>
+                    <p>Ao continuar, concordo com os termos de uso e a política de privacidade.</p>
                 </div>
-                {currState === "Login"
-                    ? <p>Create a new account? <span onClick={() => setCurrState('Sign Up')}>Click here</span></p>
-                    : <p>Already have an account? <span onClick={() => setCurrState('Login')}>Login here</span></p>
+                {currState === "Entrar"
+                    ? <p>Criar uma nova conta? <span onClick={() => setCurrState('Cadastrar-se')}>Clique aqui</span></p>
+                    : <p>Já tem uma conta? <span onClick={() => setCurrState('Entrar')}>Acesse aqui</span></p>
                 }
             </form>
         </div>

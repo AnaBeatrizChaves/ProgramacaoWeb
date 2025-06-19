@@ -21,14 +21,14 @@ const loginUser = async (req,res) => {
         const isMatch = await bcrypt.compare(password, user.password)
 
         if(!isMatch){
-            return res.json({success:false,message: "Credênciais Inválidas!"})
+            return res.json({success:false,message: "Credenciais Inválidas!"})
         }
 
         const token = createToken(user._id)
         res.json({success:true,token})
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({success:false,message:"Erro"})
     }
 }
 
@@ -61,7 +61,7 @@ const registerUser = async (req,res) => {
 
     } catch(error){
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({success:false,message:"Erro"})
     }
 }
 

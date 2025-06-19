@@ -19,7 +19,7 @@ const Add = () => {
         event.preventDefault();
 
         if (!image) {
-            toast.error('Image not selected');
+            toast.error('Imagem não selecionada');
             return null;
         }
 

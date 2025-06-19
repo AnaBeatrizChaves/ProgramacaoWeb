@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-content-left">
             <img src={assets.logo} alt="" />
-            <p>A equipe Nuuh12 Distribuidora é referência em qualidade, variedade e atendimento personalizado para levar até você as melhores bebidas do mercado. Nosso compromisso é garantir que cada entrega seja feita com rapidez, segurança e total cuidado, para que você aproveite seus momentos com quem ama, seja em festas, encontros ou no dia a dia. Na Nuuh12, sua satisfação é nossa prioridade, oferecendo sempre as melhores opções para todos os gostos e ocasiões. Conte com a gente para abastecer sua festa com excelência!</p>
+            <p>A equipe Nuuh12 Distribuidora é referência em qualidade, variedade e atendimento personalizado para levar até você as melhores bebidas do mercado. Nosso compromisso é garantir que cada entrega seja feita com rapidez, segurança e total cuidado. Na Nuuh12, sua satisfação é nossa prioridade, oferecendo sempre as melhores opções para todos os gostos e ocasiões!</p>
             
         </div>
         <div className="footer-content-center">

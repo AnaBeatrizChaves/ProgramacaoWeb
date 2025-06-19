@@ -10,13 +10,15 @@ const PlaceOrder = () => {
 
     const [payment, setPayment] = useState("cod")
     const [data, setData] = useState({
-        nomeCompleto: "",
+        firstName: "",
+        lastName: "",
         email: "",
-        cpf: "",
-        dataNascimento: "",
-        telefone: "",
-        endereco: "",
-        cep: ""
+        street: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        country: "",
+        phone: ""
     })
 
     const { getTotalCartAmount, token, food_list, cartItems, url, setCartItems,currency,deliveryCharge } = useContext(StoreContext);
@@ -70,7 +72,7 @@ const PlaceOrder = () => {
 
     useEffect(() => {
         if (!token) {
-            toast.error("Para fazer um pedido, faça o login primeiro!")
+            toast.error("Para fazer um pedido, faça o login primeiro")
             navigate('/cart')
         }
         else if (getTotalCartAmount() === 0) {
@@ -81,48 +83,53 @@ const PlaceOrder = () => {
     return (
         <form onSubmit={placeOrder} className='place-order'>
             <div className="place-order-left">
-                <p className='title'>Informações da entrega</p>
+                <p className='title'>Informações de entrega</p>
                 <div className="multi-field">
-                    <input type="text" name='nomeCompleto' onChange={onChangeHandler} value={data.nomeCompleto}placeholder='Nome Completo' required />
+                    <input type="text" name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='Primeiro nome' required />
+                    <input type="text" name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Sobrenome' required />
                 </div>
                 <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder='Email' required />
-                <input type="text" name='cpf' onChange={onChangeHandler} value={data.cpf} placeholder='CPF' required />
+                <input type="text" name='street' onChange={onChangeHandler} value={data.street} placeholder='Rua' required />
                 <div className="multi-field">
-                    <input type="date" name='dataNascimento' onChange={onChangeHandler} value={data.dataNascimento} placeholder='Data de Nascimento' required />
-                    <input type="text" name='telefone' onChange={onChangeHandler} value={data.telefone} placeholder='Telefone' required />
+                    <input type="text" name='city' onChange={onChangeHandler} value={data.city} placeholder='Cidade' required />
+                    <input type="text" name='state' onChange={onChangeHandler} value={data.state} placeholder='Estado' required />
                 </div>
-                <input type="text" name='endereco' onChange={onChangeHandler} value={data.endereco} placeholder='Endereço' required />
-                 <div className="multi-field">
-                <input type="text" name='cep' onChange={onChangeHandler} value={data.cep} placeholder='CEP' required />
+                <div className="multi-field">
+                    <input type="text" name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='CEP' required />
                 </div>
+                <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Telefone' required />
             </div>
             <div className="place-order-right">
                 <div className="cart-total">
-                    <h2>Total do Carrinho</h2>
+                    <h2>Totais do carrinho</h2>
                     <div>
                         <div className="cart-total-details"><p>Subtotal</p><p>{currency}{getTotalCartAmount()}</p></div>
                         <hr />
-                        <div className="cart-total-details"><p>Taxa de Entrega</p><p>{currency}{getTotalCartAmount() === 0 ? 0 : deliveryCharge}</p></div>
+                        <div className="cart-total-details"><p>Taxa de entrega</p><p>{currency}{getTotalCartAmount() === 0 ? 0 : deliveryCharge}</p></div>
                         <hr />
                         <div className="cart-total-details"><b>Total</b><b>{currency}{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + deliveryCharge}</b></div>
                     </div>
                 </div>
                 <div className="payment">
-                   <h2>Forma de Pagamento <small>(No ato da entrega)</small></h2>
-                    <div onClick={() => setPayment("pix")} className="payment-option">
-                        <img src={payment === "pix" ? assets.checked : assets.un_checked} alt="" />
-                        <p>PIX</p>
-                    </div>
-                      <div onClick={() => setPayment("dinheiro")} className="payment-option">
+                    <h2>Método de pagamento (No ato da entrega)</h2>
+                    <div onClick={() => setPayment("dinheiro")} className="payment-option">
                         <img src={payment === "dinheiro" ? assets.checked : assets.un_checked} alt="" />
                         <p>Dinheiro</p>
                     </div>
-                      <div onClick={() => setPayment("cartao")} className="payment-option">
+                     <div onClick={() => setPayment("pix")} className="payment-option">
+                        <img src={payment === "pix" ? assets.checked : assets.un_checked} alt="" />
+                        <p>Pix</p>
+                    </div>
+                     <div onClick={() => setPayment("cartao")} className="payment-option">
                         <img src={payment === "cartao" ? assets.checked : assets.un_checked} alt="" />
                         <p>Cartão (Débito ou Crédito)</p>
                     </div>
+                    {/* <div onClick={() => setPayment("stripe")} className="payment-option">
+                        <img src={payment === "stripe" ? assets.checked : assets.un_checked} alt="" />
+                        <p>Stripe ( Credit / Debit )</p>
+                    </div> */}
                 </div>
-                <button className='place-order-submit' type='submit'>FAZER PEDIDO</button>
+                <button className='place-order-submit' type='submit'>{payment==="stripe"?"Prosseguir para o pagamento":"Fazer pedido"}</button>
             </div>
         </form>
     )

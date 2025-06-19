@@ -36,7 +36,7 @@ const Order = () => {
 
   return (
     <div className='order add'>
-      <h3>Order Page</h3>
+      <h3>Pedidos</h3>
       <div className="order-list">
         {orders.map((order, index) => (
           <div key={index} className='order-item'>
@@ -59,12 +59,12 @@ const Order = () => {
               </div>
               <p className='order-item-phone'>{order.address.phone}</p>
             </div>
-            <p>Items : {order.items.length}</p>
+            <p>Itens : {order.items.length}</p>
             <p>{currency}{order.amount}</p>
             <select onChange={(e) => statusHandler(e, order._id)} value={order.status} name="" id="">
-              <option value="Em preparo">Food Processing</option>
-              <option value="Saiu para a entrega">Out for delivery</option>
-              <option value="Entregue">Delivered</option>
+              <option value="Em preparo">Em preparo</option>
+              <option value="Saiu para entrega">Saiu para entrega</option>
+              <option value="Entregue">Entregue</option>
             </select>
           </div>
         ))}

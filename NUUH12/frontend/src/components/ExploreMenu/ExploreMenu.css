@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 60px; /* espaçamento para que setas não fiquem sobre as imagens */
+  padding: 0 60px;
   box-sizing: border-box;
 }
 
@@ -41,14 +41,14 @@
   align-items: center;
 }
 
-.explore-menu-list-item img {
+.explore-menu-list-item img{
   width: 7.5vw;
   min-width: 80px;
   height: 7.5vw;
   min-height: 80px;
   object-fit: cover;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 20%;
   transition: 0.2s;
 }
 
@@ -99,4 +99,10 @@
     max-width: 100%;
     font-size: 14px;
   }
+}
+
+.explore-menu-list-item img:hover {
+  box-shadow: 0 0 18px rgba(18, 17, 17, 0.89); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }

@@ -147,3 +147,10 @@ position: relative;
         display: none;
     }
 }
+
+.navbar-menu a:hover, 
+.navbar-menu Link:hover {
+    color: #000000; 
+    font-weight: 600; 
+    transition: 0.3s;
+}
